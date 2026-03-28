@@ -1,6 +1,6 @@
-#🚀 API Automation & Monitoring Pipeline (Postman + Newman)
+🚀 Automated API Testing & Monitoring Pipeline (Postman + Newman)
 🧠 Overview
 
-This project demonstrates how API testing can be automated and integrated into a business workflow to ensure reliability, performance, and continuous monitoring.
+This project demonstrates how API testing can be transformed into an automated and continuous validation process using Postman and Newman.
 
-It simulates a real-world use case where APIs are validated automatically to reduce failures and improve system quality.
+It simulates a real-world business use case where backend APIs are tested, validated, and monitored automatically to ensure system reliability and reduce manual effort.
