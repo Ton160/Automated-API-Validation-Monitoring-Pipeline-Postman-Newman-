@@ -1,0 +1,327 @@
+{
+  "info": {
+    "_postman_id": "84fbbc67-3be3-43ef-a950-26dc160c9591",
+    "name": "API QAcart Learning Path",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53492709",
+    "_collection_link": "https://go.postman.co/collection/53492709-84fbbc67-3be3-43ef-a950-26dc160c9591?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonfile = pm.response.json();\r",
+              "var token=jsonfile.accessToken\r",
+              "\r",
+              "pm.environment.set(\"token\", token);\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvbmltYWdkeTM5OEBtYWlsLmNvbSIsImlhdCI6MTc3NDUzODkxOSwiZXhwIjoxNzc0NTQyNTE5LCJzdWIiOiIyIn0.R4zrh2Tpngrcn9v2L_nUPGrQPqqe2FzyboAdBu7qMh8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"tonimagdy398@mail.com\",\r\n  \"password\": \"1234567894321abdcedfhkgiuyrtbkkfmnghfffnhhvhnvnhbhbhbhbhbfhb\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/signin",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Course",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonfile = pm.response.json();\r",
+              "var CourseID=jsonfile.id \r",
+              "\r",
+              "pm.environment.set(\"CourseID\", CourseID);\r",
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n          \r\n        \"title\": \"Java\",\r\n        \"Description\": \"full JavaProgramming Course from Zero in Arabic\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/660/Courses",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "660",
+            "Courses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Course",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Check that API Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Check if the Response contain Java\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"Java\");\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+              "});\r",
+              "});\r",
+              "pm.test(\"Check the title of the First Course\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.title).to.eql(\"Java\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/660/Courses/{{CourseID}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "660",
+            "Courses",
+            "{{CourseID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put Course",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Check that API Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\r\n          \r\n        \"title\": \"Python\",\r\n        \"Description\": \"full Python Course from Zero in Arabic\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/660/Courses/{{CourseID}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "660",
+            "Courses",
+            "{{CourseID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a course",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Check that API Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/660/Courses/{{CourseID}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "660",
+            "Courses",
+            "{{CourseID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all Courses",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Check that API Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/660/Courses",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "660",
+            "Courses"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
