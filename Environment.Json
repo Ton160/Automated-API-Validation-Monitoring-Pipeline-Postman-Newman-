@@ -1,0 +1,28 @@
+{
+  "id": "62a26fcb-83bb-43b2-9436-10c030118f1b",
+  "name": "locally",
+  "values": [
+    {
+      "key": "url",
+      "value": "http://localhost:3000",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "CourseID",
+      "value": "",
+      "type": "any",
+      "enabled": true
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "any",
+      "enabled": true
+    }
+  ],
+  "color": null,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2026-03-26T16:35:33.776Z",
+  "_postman_exported_using": "Postman/11.90.0"
+}
